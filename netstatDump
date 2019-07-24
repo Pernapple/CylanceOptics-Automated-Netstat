@@ -1,0 +1,12 @@
+import os
+import datetime
+import subprocess
+
+mylist = []
+currentDateTime = datetime.datetime.now()
+mylist.append(currentDateTime)
+netstatResults = os.popen("netstat -nb").readlines()
+with open ('netstattestresults.txt', 'w') as outputFile:
+    outputFile.write(str("This netstat was completed at: ") + str(mylist[0]))   
+    for row in netstatResults:
+        outputFile.write("%s\n" % str(row))
